@@ -1,9 +1,13 @@
 use std::iter::Product;
 
+
 use dialoguer::{theme::ColorfulTheme, Select}; // Or another text UI library
 use dialoguer::{Input::theme::ColorfulTheme}; // For Input
 use rand::Rng; 
 use src::libs;
+use crate::auth::register;  
+use crate::auth::login;  
+use crate::auth::auth; 
 
 fn main() {
 
@@ -62,8 +66,16 @@ fn main() {
     }
 }
 
-// Placeholder for a login function
+
 fn prompt_for_login() -> bool { 
-    // ...  temporary login code
-    true // Temporary - will need proper authentication
+    let username = Input::with_theme(&ColorfulTheme::default())
+    .prompt("Password: ")
+    .interact_text()
+    .unwrap()
+    if username == "admin" && password == "secret"{ //will replace 
+        true
+    } else{
+        println!("Invalid login!")
+        false
+    }
 }
